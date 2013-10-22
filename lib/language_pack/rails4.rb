@@ -31,6 +31,7 @@ class LanguagePack::Rails4 < LanguagePack::Rails3
 
   def build_bundler
     instrument "rails4.build_bundler" do
+      puts "rails4"
       super
     end
   end

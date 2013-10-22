@@ -90,11 +90,14 @@ class LanguagePack::Ruby < LanguagePack::Base
       install_jvm
       setup_language_pack_environment
       setup_profiled
+      puts "pre allow_git"
       allow_git do
         install_language_pack_gems
         build_bundler
         create_database_yml
+        puts "pre binaries"
         install_binaries
+        puts "pre run_ass"
         run_assets_precompile_rake_task
       end
       super

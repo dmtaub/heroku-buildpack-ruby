@@ -696,6 +696,7 @@ params = CGI.parse(uri.query || "")
 
   def run_assets_precompile_rake_task
     instrument 'ruby.run_assets_precompile_rake_task' do
+      puts "gonna test for precomp"
       if rake_task_defined?("assets:precompile")
         require 'benchmark'
 
@@ -704,6 +705,8 @@ params = CGI.parse(uri.query || "")
         if $?.success?
           puts "Asset precompilation completed (#{"%.2f" % time}s)"
         end
+      else
+          puts "no precomp raks found"
       end
     end
   end

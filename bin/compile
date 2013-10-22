@@ -3,7 +3,7 @@
 BUILD_DIR=ARGV[0]
 CACHE_DIR=ARGV[1]
 
-
+require 'fileutils'
 # converted from heroku-buildpack-libsodium
 VERSION="0.4.2"
 SODIUM_DIR="libsodium-#{VERSION}"
@@ -11,7 +11,7 @@ VENDOR_PATH="#{BUILD_DIR}/vendor"
 TARBALL="#{SODIUM_DIR}.tar.gz"
 TARBALL_URL="https://github.com/jedisct1/libsodium/releases/download/#{VERSION}/#{TARBALL}"
 
-`mkdir -p #{VENDOR_PATH}`
+FileUtils::mkdir_p VENDOR_PATH
 `cd #{VENDOR_PATH}`
 
 print "-----> Fetching libsodium... "

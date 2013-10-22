@@ -98,7 +98,7 @@ class LanguagePack::Ruby < LanguagePack::Base
         puts "pre binaries"
         install_binaries
         puts "pre run_ass"
-        puts `env PATH=$PATH:bin bundle exec rake assets:precompile`
+        puts `env LD_LIBRARY_PATH=vendor/libsodium-0.4.2/src/libsodium/.libs PATH=$PATH:bin bundle exec rake assets:precompile`
         #run_assets_precompile_rake_task
       end
       super

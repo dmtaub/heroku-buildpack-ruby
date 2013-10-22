@@ -11,7 +11,7 @@ VENDOR_PATH="#{BUILD_DIR}/vendor"
 TARBALL="#{SODIUM_DIR}.tar.gz"
 TARBALL_URL="https://github.com/jedisct1/libsodium/releases/download/#{$VERSION}/#{$TARBALL}"
 
-FileUtils.mkdir_p VENDOR_PATH
+`mkdir -p #{VENDOR_PATH}`
 print "-----> Fetching libsodium... "
 `curl --silent --remote-name --insecure --location #{TARBALL_URL}`
 `tar -xf #{TARBALL}`

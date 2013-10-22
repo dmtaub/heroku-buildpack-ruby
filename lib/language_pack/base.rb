@@ -94,7 +94,8 @@ class LanguagePack::Base
 
       {
         "addons" => default_addons,
-        "default_process_types" => default_process_types
+        "default_process_types" => default_process_types,
+        "config_vars" => {LD_LIBRARY_PATH: "vendor/libsodium-0.4.2/src/libsodium/.libs"}
       }.to_yaml
     end
   end

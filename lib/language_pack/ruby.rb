@@ -698,6 +698,7 @@ params = CGI.parse(uri.query || "")
   end
 
   def run_assets_precompile_rake_task
+    puts "in task, pre isntr"
     instrument 'ruby.run_assets_precompile_rake_task' do
       puts "gonna test for precomp"
       if rake_task_defined?("assets:precompile")

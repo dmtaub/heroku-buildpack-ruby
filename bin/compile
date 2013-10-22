@@ -9,7 +9,7 @@ VERSION="0.4.2"
 SODIUM_DIR="libsodium-#{VERSION}"
 VENDOR_PATH="#{BUILD_DIR}/vendor"
 TARBALL="#{SODIUM_DIR}.tar.gz"
-TARBALL_URL="https://github.com/jedisct1/libsodium/releases/download/#{$VERSION}/#{$TARBALL}"
+TARBALL_URL="https://github.com/jedisct1/libsodium/releases/download/#{VERSION}/#{TARBALL}"
 
 `mkdir -p #{VENDOR_PATH}`
 print "-----> Fetching libsodium... "

@@ -98,7 +98,8 @@ class LanguagePack::Ruby < LanguagePack::Base
         puts "pre binaries"
         install_binaries
         puts "pre run_ass"
-        run_assets_precompile_rake_task
+        run_stdout("env PATH=$PATH:bin bundle exec rake assets:precompile")
+        #run_assets_precompile_rake_task
       end
       super
     end

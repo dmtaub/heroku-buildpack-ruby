@@ -1,5 +1,35 @@
 #!/usr/bin/env ruby
 
+BUILD_DIR=ARGV[0]
+CACHE_DIR=ARGV[1]
+
+
+# converted from heroku-buildpack-libsodium
+VERSION="0.4.2"
+SODIUM_DIR="libsodium-#{VERSION}"
+VENDOR_PATH="#{BUILD_DIR}/vendor"
+TARBALL="#{SODIUM_DIR}.tar.gz"
+TARBALL_URL="https://github.com/jedisct1/libsodium/releases/download/#{$VERSION}/#{$TARBALL}"
+
+FileUtils.mkdir_p VENDOR_PATH
+print "-----> Fetching libsodium... "
+`curl --silent --remote-name --insecure --location #{TARBALL_URL}`
+`tar -xf #{TARBALL}`
+`cd #{SODIUM_DIR}`
+puts "done"
+
+print "-----> Configuring libsodium... "
+`./configure --silent --disable-debug --disable-dependency-tracking`
+puts "done"
+
+print "-----> Compiling libsodium... "
+`make &> /dev/null`
+# make check &> /dev/null
+# make install &> /dev/null
+puts "done"
+
+
+
 # sync output
 $stdout.sync = true
 
@@ -7,9 +37,11 @@ $:.unshift File.expand_path("../../lib", __FILE__)
 require "language_pack"
 
 LanguagePack::Instrument.trace 'compile', 'app.compile' do
-  if pack = LanguagePack.detect(ARGV[0], ARGV[1])
+  if pack = LanguagePack.detect(BUILD_DIR,CACHE_DIR)
     pack.log("compile") do
       pack.compile
     end
   end
 end
+
+

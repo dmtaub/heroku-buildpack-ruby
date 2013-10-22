@@ -8,3 +8,8 @@ LanguagePack::Instrument.trace 'release', 'app.release' do
     puts pack.release
   end
 end
+
+puts  "    LD_LIBRARY_PATH: vendor/libsodium-0.4.2/src/libsodium/.libs"
+
+
+

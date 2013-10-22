@@ -3,6 +3,9 @@ Heroku buildpack: Ruby
 
 This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for Ruby, Rack, and Rails apps. It uses [Bundler](http://gembundler.com) for dependency management.
 
+It is integrating for the libsodium library.
+
+
 Usage
 -----
 
